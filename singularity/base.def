@@ -11,16 +11,14 @@ From: centos:8
 
 %post
 dnf install -y dnf-plugins-core
-dnf install -y which
 dnf install -y gcc-c++ gcc-gfortran
 dnf install -y epel-release
-dnf install -y git wget bc
+dnf install -y diffutils which
+dnf install -y git wget
 dnf install -y gdb valgrind
-dnf install -y make bzip2 autoconf automake libtool curl make unzip
+dnf install -y make bzip2 autoconf automake libtool cmake 
 dnf install -y python3 python3-devel
-dnf install -y openssl openssl-devel
 dnf install -y boost boost-devel
-dnf install -y cmake
 dnf install -y openmpi openmpi-devel environment-modules
 dnf install -y gmp gmp-c++ gmp-devel mpfr mpfr-devel
 dnf install -y libxml2-devel libxml2

@@ -9,12 +9,19 @@ sdpb $@
 
 %environment
 export SHELL=/bin/bash
+export SDPB_PVM2SDP=pvm2sdp
+export SDPB_SDPB=sdpb
 source /base/python/bin/activate
+source /usr/share/Modules/init/bash
+module load mpi
+
 
 %labels
 
 %test
-cd /src
+# Container dirs are immutable after bootstrap
+cp -n -r /src/test test
+SDPB_TESTPREFIX=test
 test/run_test.sh
 
 %post
