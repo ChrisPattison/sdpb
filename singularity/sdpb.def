@@ -25,6 +25,9 @@ SDPB_TESTPREFIX=test
 test/run_test.sh
 
 %post
+# HACK: Since the build is in-tree we end up copying various build outputs
+rm -rf /src/singularity
+
 source /usr/share/Modules/init/bash
 module load mpi
 
