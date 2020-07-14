@@ -1,0 +1,29 @@
+Bootstrap: localimage
+From: ./base.sif
+
+%runscript
+sdpb $@
+
+%files
+../ /src
+
+%environment
+export SHELL=/bin/bash
+source /base/python/bin/activate
+
+%labels
+
+%test
+cd /src
+test/run_test.sh
+
+%post
+source /usr/share/Modules/init/bash
+module load mpi
+
+source /base/python/bin/activate
+
+cd /src
+CXX=mpicxx ./waf configure --elemental-dir=/usr/local/
+./waf -j$(nproc)
+./waf install
